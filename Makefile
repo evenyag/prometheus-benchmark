@@ -20,6 +20,6 @@ delete:
 	helm uninstall $(CHART_NAME) -n $(NAMESPACE)
 
 monitor:
-	kubectl -n $(NAMESPACE) port-forward deployment/$(CHART_NAME)-prometheus-benchmark-vmsingle 8428
+	kubectl -n $(NAMESPACE) port-forward deployment/$(CHART_NAME)-prometheus-benchmark-vmsingle 8428 --address='0.0.0.0'
 
 re-install: delete install
