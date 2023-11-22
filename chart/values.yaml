@@ -106,5 +106,7 @@ remoteStorages:
   #     vmagentExtraFlags: []
   #     # - "--remoteWrite.useVMProto=true"
   gtsingle:
-    writeURL: "http://172.17.0.1:4000/v1/prometheus/write"
+    writeURL: "http://172.17.0.1:14000/v1/prometheus/write"
+    readURL: "http://172.17.0.1:14000/v1/prometheus/"
+    readHeaders: "Content-Type:application/x-www-form-urlencoded"
 
