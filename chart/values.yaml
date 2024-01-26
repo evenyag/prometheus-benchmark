@@ -71,41 +71,40 @@ writeReplicaCPU: 2
 remoteStorages:
   # the name of the remote storage to test.
   # The name is added to remote_storage_name label at collected metrics
-  vm:
-    # writeURL should contain the url, which accepts Prometheus remote_write
-    # protocol at the tested remote storage.
-    # For example, the following urls may be used for testing VictoriaMetrics:
-    # - http://<victoriametrics-addr>:8428/api/v1/write for single-node VictoriaMetrics
-    # - http://<vminsert-addr>:8480/insert/0/prometheus/api/v1/write for cluster VictoriaMetrics
-    # writeURL: "http://victoria-metrics-victoria-metrics-cluster-vminsert.default.svc.cluster.local:8480/insert/0/prometheus/api/v1/write"
-    writeURL: "http://172.17.0.1:8428/api/v1/write"
-    # writeURLReplicas is an optional number of writeURL replicas to send data to.
-    # A unique `url_replica` label is added to every writeURL replica via `extra_label` query arg
-    # in order to generate unique time series.
-    # This option can be used for increasing the number of active time series
-    # to send to writeURL. Please note, `extra_label` feature is supported only by VictoriaMetrics servers.
-    # See also writeReplicas option.
-    writeURLReplicas: 1
-    # readURL is an optional url when query performance needs to be tested.
-    # The query performance is tested by sending alerting queries from files/alerts.yaml
-    # to readURL.
-    # For example, the following urls may be used for testing query performance:
-    # - http://<victoriametrics-addr>:8428/ for single-node VictoriaMetrics
-    # - http://<vmselect-addr>:8481/select/0/prometheus/ for cluster VictoriaMetrics
-    readURL: "http://172.17.0.1:8428/"
-    # writeBearerToken is an optional bearer token to use when writing data to writeURL.
-    writeBearerToken: ""
-    # readBearerToken is an optional bearer token to use when querying data from readURL.
-    readBearerToken: ""
-    # writeHeaders is an optional list of headers in form `header:value`, attached to every write request.
-    # multiple headers must be delimited by '^^': 'header1:value1^^header2:value2'
-    writeHeaders: ""
-    # readHeaders is an optional list of headers in form `header:value`, attached to every read request.
-    # multiple headers must be delimited by '^^': 'header1:value1^^header2:value2'
-    readHeaders: ""
-    # vmagentExtraFlags allows to pass additional flags to vmagent.
-    vmagentExtraFlags: []
-    # - "--remoteWrite.useVMProto=true"
+  #   vm:
+  #     # writeURL should contain the url, which accepts Prometheus remote_write
+  #     # protocol at the tested remote storage.
+  #     # For example, the following urls may be used for testing VictoriaMetrics:
+  #     # - http://<victoriametrics-addr>:8428/api/v1/write for single-node VictoriaMetrics
+  #     # - http://<vminsert-addr>:8480/insert/0/prometheus/api/v1/write for cluster VictoriaMetrics
+  #     writeURL: "http://victoria-metrics-victoria-metrics-cluster-vminsert.default.svc.cluster.local:8480/insert/0/prometheus/api/v1/write"
+  #     # writeURLReplicas is an optional number of writeURL replicas to send data to.
+  #     # A unique `url_replica` label is added to every writeURL replica via `extra_label` query arg
+  #     # in order to generate unique time series.
+  #     # This option can be used for increasing the number of active time series
+  #     # to send to writeURL. Please note, `extra_label` feature is supported only by VictoriaMetrics servers.
+  #     # See also writeReplicas option.
+  #     writeURLReplicas: 1
+  #     # readURL is an optional url when query performance needs to be tested.
+  #     # The query performance is tested by sending alerting queries from files/alerts.yaml
+  #     # to readURL.
+  #     # For example, the following urls may be used for testing query performance:
+  #     # - http://<victoriametrics-addr>:8428/ for single-node VictoriaMetrics
+  #     # - http://<vmselect-addr>:8481/select/0/prometheus/ for cluster VictoriaMetrics
+  #     readURL: ""
+  #     # writeBearerToken is an optional bearer token to use when writing data to writeURL.
+  #     writeBearerToken: ""
+  #     # readBearerToken is an optional bearer token to use when querying data from readURL.
+  #     readBearerToken: ""
+  #     # writeHeaders is an optional list of headers in form `header:value`, attached to every write request.
+  #     # multiple headers must be delimited by '^^': 'header1:value1^^header2:value2'
+  #     writeHeaders: ""
+  #     # readHeaders is an optional list of headers in form `header:value`, attached to every read request.
+  #     # multiple headers must be delimited by '^^': 'header1:value1^^header2:value2'
+  #     readHeaders: ""
+  #     # vmagentExtraFlags allows to pass additional flags to vmagent.
+  #     vmagentExtraFlags: []
+  #     # - "--remoteWrite.useVMProto=true"
   gtsingle:
     writeURL: "http://172.17.0.1:14000/v1/prometheus/write"
     readURL: "http://172.17.0.1:14000/v1/prometheus/"
